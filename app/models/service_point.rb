@@ -1,3 +1,3 @@
 class ServicePoint < ApplicationRecord
-  belongs_to :parcel
+  has_one :parcel
 end
