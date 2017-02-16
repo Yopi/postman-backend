@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   root to: 'application#home'
 
   get '/me', to: 'users#me'
+
+  resources :parcels
 end
