@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get '/me', to: 'users#me'
   get '/requests', to: 'requests#index'
+  get '/requests/pending', to: 'requests#pending'
 
   resources :parcels
 end

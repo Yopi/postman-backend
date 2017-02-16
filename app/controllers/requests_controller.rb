@@ -6,14 +6,25 @@ class RequestsController < ApplicationController
     params[:latitude]
 
     if params[:longitude].present? && params[:latitude].present?
+      # @TODO
+      # @requests = Request.all.order("nära").where("närmare än 10km")
     else
       @requests = Request.all
-      # return render json: .to_a.map { |r| [r, r.parcel.service_point] }.to_json
     end
+  end
+
+  def pending
+    @requests = Request.where(courier_id: current_user.id)
+  end
+
+  def create
+    current_user.requests.build(requests_params).save
   end
 
   private
   def requests_params
-#    params.require(:request).permit(:)
+    params.require(:request).permit(:parcel_id, :owner_id, :courier_id, :price, :address, :accepted)
   end
 end
+
+
