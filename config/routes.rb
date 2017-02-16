@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   get '/requests/pending', to: 'requests#pending'
   get '/requests', to: 'requests#index'
 
+  get '/service_points', to: 'service_points#index'
+
   resources :parcels
 end

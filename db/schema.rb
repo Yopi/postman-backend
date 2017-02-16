@@ -10,10 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170216191605) do
+ActiveRecord::Schema.define(version: 20170216193240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "cube"
+  enable_extension "earthdistance"
 
   create_table "parcels", force: :cascade do |t|
     t.integer  "user_id",                       null: false
