@@ -2,7 +2,9 @@ class RequestsController < ApplicationController
   before_action :authenticate
 
   def index
-    if params[:longitude].present? && params[:latitude].present?
+    if params[:service_point_id].present?
+      ServicePoint.find(params[:service_point_id]).parcels.map(&:request).compact
+    elsif params[:longitude].present? && params[:latitude].present?
       @requests = ServicePoint.select("*, earth_distance(ll_to_earth(#{params[:latitude]}, #{params[:longitude]}), ll_to_earth(latitude, longitude)) as distance").where('earth_box(ll_to_earth(?, ?), 1000) @> ll_to_earth(latitude, longitude)', params[:latitude], params[:longitude]).order('distance').map(&:parcels).flatten.compact.map(&:request).compact
     else
       @requests = Request.all
