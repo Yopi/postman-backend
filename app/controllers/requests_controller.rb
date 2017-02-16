@@ -7,14 +7,13 @@ class RequestsController < ApplicationController
 
     if params[:longitude].present? && params[:latitude].present?
     else
-      return render json: Request.all.to_a.to_json
+      @requests = Request.all
+      # return render json: .to_a.map { |r| [r, r.parcel.service_point] }.to_json
     end
-
-    return render json: current_user.parcels.to_a.to_json
   end
 
   private
   def requests_params
-    params.require(:request).permit(:)
+#    params.require(:request).permit(:)
   end
 end

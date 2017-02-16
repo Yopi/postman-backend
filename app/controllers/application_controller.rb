@@ -4,6 +4,7 @@ class ApplicationController < ActionController::API
   include ActionController::Serialization
 
   prepend_before_action :logged_in
+  before_action :set_request_format
 
   def home
     render json: {name: 'Postman API', api_version: '1.0'}.to_json
@@ -27,5 +28,9 @@ class ApplicationController < ActionController::API
 
   def authenticate
     return head 403 if current_user.blank?
+  end
+
+  def set_request_format
+    request.format = 'json'
   end
 end
