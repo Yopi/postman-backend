@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  service_point_id: MyString
+  weight: 1
+  size: MyString
+
+two:
+  user_id: 1
+  service_point_id: MyString
+  weight: 1
+  size: MyString
