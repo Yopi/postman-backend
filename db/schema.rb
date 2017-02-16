@@ -10,29 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170216170050) do
+ActiveRecord::Schema.define(version: 20170216191605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "parcels", force: :cascade do |t|
-    t.integer  "user_id",          null: false
-    t.integer  "service_point_id", null: false
-    t.integer  "weight",           null: false
-    t.string   "size",             null: false
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.integer  "user_id",                       null: false
+    t.integer  "service_point_id",              null: false
+    t.integer  "weight",                        null: false
+    t.string   "size",                          null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.string   "sender",           default: ""
   end
 
   create_table "requests", force: :cascade do |t|
-    t.integer  "parcel_id",                  null: false
-    t.integer  "owner_id",                   null: false
+    t.integer  "parcel_id",                      null: false
+    t.integer  "owner_id",                       null: false
     t.integer  "courier_id"
-    t.integer  "price",                      null: false
-    t.string   "address",                    null: false
-    t.boolean  "accepted",   default: false, null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.integer  "price",                          null: false
+    t.string   "address",                        null: false
+    t.boolean  "accepted",       default: false, null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "status_message", default: ""
+    t.boolean  "picked_up",      default: false
+    t.boolean  "delivered",      default: false
   end
 
   create_table "service_points", force: :cascade do |t|

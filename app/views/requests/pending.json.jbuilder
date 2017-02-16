@@ -6,5 +6,6 @@ json.array! @requests do |request|
   json.parcel_size request.parcel.size
   json.price request.price
   json.address request.address
+  json.courier request.courier_id
   json.accepted request.accepted
 end

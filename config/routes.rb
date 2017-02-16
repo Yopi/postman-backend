@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   root to: 'application#home'
 
   get '/me', to: 'users#me'
-  get '/requests', to: 'requests#index'
   get '/requests/pending', to: 'requests#pending'
+  get '/requests', to: 'requests#index'
 
   resources :parcels
 end

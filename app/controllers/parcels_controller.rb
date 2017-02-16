@@ -2,7 +2,7 @@ class ParcelsController < ApplicationController
   before_action :authenticate
 
   def index
-    return render json: current_user.parcels.to_a.to_json
+    @parcels = current_user.parcels
   end
 
   def create
