@@ -15,15 +15,13 @@ class ApplicationController < ActionController::API
 
   protected
   def logged_in
-    user = nil
-    user, pass = ActionController::HttpAuthentication::Basic::user_name_and_password(request)
-
-    if user.present? && pass.present?
-      is_authenticated = authenticate_or_request_with_http_basic do |email, password|
-        user = User.find_by_email(email)
-        user && user.authenticate(password)
+    email = params[:email]
+    password = params[:password]
+    if email.present? && password.present?
+      user = User.find_by_email(email)
+      if user && user.authenticate(password)
+        @current_user = user
       end
-      @current_user = user if is_authenticated
     end
   end
 
