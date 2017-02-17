@@ -1,4 +1,5 @@
 json.array! @requests do |request|
+  json.id request.id
   json.service_point request.parcel.service_point.name
   json.service_point_longitude request.parcel.service_point.longitude
   json.service_point_latitude request.parcel.service_point.latitude
