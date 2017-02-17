@@ -20,7 +20,7 @@ class RequestsController < ApplicationController
   end
 
   def update
-    Request.find(params[:id]).update(request_params)
+    Request.find(params[:id]).update(requests_params)
   end
 
   private
