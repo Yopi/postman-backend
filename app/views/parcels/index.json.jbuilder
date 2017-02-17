@@ -28,4 +28,5 @@ json.array! @parcels do |parcel|
     json.longitude parcel.service_point.longitude
     json.latitude parcel.service_point.latitude
   end
+  json.service_point parcel.service_point.name
 end
