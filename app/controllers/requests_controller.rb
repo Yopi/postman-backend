@@ -19,6 +19,10 @@ class RequestsController < ApplicationController
     current_user.requests.build(requests_params).save
   end
 
+  def update
+    Request.find(params[:request][:id]).update(request_params)
+  end
+
   private
   def requests_params
     params.require(:request).permit(:parcel_id, :owner_id, :courier_id, :price, :address, :accepted)
