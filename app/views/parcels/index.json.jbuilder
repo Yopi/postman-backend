@@ -14,7 +14,7 @@ json.array! @parcels do |parcel|
     end
   else
     json.status do
-      json.message "At service point"
+      json.message parcel.status
       json.picked_up false
       json.delivered false
       json.courier nil
